@@ -1,6 +1,5 @@
-import axios, { AxiosResponse } from "axios";
-import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
-import { Activity } from "../layout/models/activity";
+import axios, { AxiosResponse } from 'axios';
+import { Activity } from '../layout/models/activity';
 
 const sleep = (delay: number) => {
   return new Promise((resolve) => {
@@ -8,7 +7,7 @@ const sleep = (delay: number) => {
   });
 };
 
-axios.defaults.baseURL = "http://localhost:5000/api";
+axios.defaults.baseURL = 'http://localhost:5000/api';
 
 axios.interceptors.response.use(async (response) => {
   try {
@@ -24,19 +23,17 @@ const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 const requests = {
   get: <T>(url: string) => axios.get<T>(url).then(responseBody),
-  post: <T>(url: string, body: {}) =>
-    axios.post<T>(url, body).then(responseBody),
+  post: <T>(url: string, body: {}) => axios.post<T>(url, body).then(responseBody),
   put: <T>(url: string, body: {}) => axios.put<T>(url, body).then(responseBody),
   del: <T>(url: string) => axios.delete<T>(url).then(responseBody),
 };
 
 const Activities = {
-  list: () => requests.get<Activity[]>("/activities"),
+  list: () => requests.get<Activity[]>('/activities'),
   details: (id: string) => requests.get<Activity>(`/activities/${id}`),
   delete: (id: string) => requests.del<void>(`/activities/${id}`),
   create: (activity: Activity) => requests.post<void>(`/activities`, activity),
-  update: (activity: Activity) =>
-    requests.put<void>(`/activities/${activity.id}`, activity),
+  update: (activity: Activity) => requests.put<void>(`/activities/${activity.id}`, activity),
 };
 
 const agent = {
