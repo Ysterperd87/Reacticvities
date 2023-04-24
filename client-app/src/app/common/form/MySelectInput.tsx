@@ -3,7 +3,7 @@ import React from 'react';
 import { Form, Label, Select } from 'semantic-ui-react';
 
 interface Props {
-  placeHolder: string;
+  placeholder: string;
   name: string;
   options: any;
   label?: string;
@@ -21,7 +21,7 @@ export default function MySelectInput(props: Props) {
         value={field.value || null}
         onChange={(e, d) => helpers.setValue(d.value)}
         onBlur={() => helpers.setTouched(true)}
-        placeholder={props.placeHolder}
+        placeholder={props.placeholder}
       />
       {meta.touched && meta.error ? (
         <Label basic color="red">
