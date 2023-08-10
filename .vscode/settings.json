@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "**/appsettings.json": true,
+        "**/bin": true,
+        "**/obj": true
+    }
+}
