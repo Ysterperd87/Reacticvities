@@ -3,5 +3,7 @@
         "**/appsettings.json": true,
         "**/bin": true,
         "**/obj": true
-    }
+    },
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false
 }
