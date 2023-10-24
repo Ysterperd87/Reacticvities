@@ -33,6 +33,7 @@ export default class ActivityStore {
     makeAutoObservable(this);
   }
 
+  // LOAD MULTIPLE
   loadActivities = async () => {
     this.setLoadingInitial(true);
     try {
@@ -48,6 +49,7 @@ export default class ActivityStore {
     }
   };
 
+  // LOAD SINGLE
   loadActivity = async (id: string) => {
     let activity = this.getActivity(id);
 
@@ -73,11 +75,13 @@ export default class ActivityStore {
     }
   };
 
+  // SET
   private setActivity = (activity: Activity) => {
     activity.date = new Date(activity.date!);
     this.activityRegistry.set(activity.id, activity);
   };
 
+  // GET
   private getActivity = (id: string) => {
     return this.activityRegistry.get(id);
   };
@@ -86,6 +90,7 @@ export default class ActivityStore {
     this.loadingInitial = state;
   };
 
+  // CREATE
   createActivity = async (activity: Activity) => {
     this.loading = true;
     activity.id = uuid();
@@ -108,6 +113,7 @@ export default class ActivityStore {
     }
   };
 
+  // UPDATE
   updateActivity = async (activity: Activity) => {
     this.loading = true;
 
@@ -129,6 +135,7 @@ export default class ActivityStore {
     }
   };
 
+  // DELETE
   deleteActivity = async (id: string) => {
     this.loading = true;
 
